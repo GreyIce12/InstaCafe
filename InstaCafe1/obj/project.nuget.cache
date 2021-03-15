@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "b9Ykm+n7HOJ2E7aU3R7EdPnOAhqg/RPEG2voKRVKE+aI71aHPscgPp8mYz0RmVfSPa0OV3DFue9qiyMNm6clcA==",
+  "dgSpecHash": "10nWXiVY2Va5E+sbxLyX0AxiIHLsq7OKwag6i4lL2vH0RJe1N4dviAvr/noxPZ+5tPnRT3Coe/xv+emuuO03TQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\moniq\\source\\repos\\InstaCafe1\\InstaCafe1\\InstaCafe1.csproj",
+  "projectFilePath": "C:\\Users\\micka\\Downloads\\InstaCafe\\InstaCafe1\\InstaCafe1.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\moniq\\.nuget\\packages\\bootstrap\\4.6.0\\bootstrap.4.6.0.nupkg.sha512",
-    "C:\\Users\\moniq\\.nuget\\packages\\jquery\\3.0.0\\jquery.3.0.0.nupkg.sha512",
-    "C:\\Users\\moniq\\.nuget\\packages\\popper.js\\1.16.1\\popper.js.1.16.1.nupkg.sha512"
+    "C:\\Users\\micka\\.nuget\\packages\\bootstrap\\4.6.0\\bootstrap.4.6.0.nupkg.sha512",
+    "C:\\Users\\micka\\.nuget\\packages\\jquery\\3.0.0\\jquery.3.0.0.nupkg.sha512",
+    "C:\\Users\\micka\\.nuget\\packages\\popper.js\\1.16.1\\popper.js.1.16.1.nupkg.sha512"
   ],
   "logs": []
 }

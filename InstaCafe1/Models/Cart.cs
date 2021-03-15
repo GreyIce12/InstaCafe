@@ -9,7 +9,7 @@ namespace InstaCafe1.Models
     {
         public int Cart_Id { get; set; }
         public Product Product_Id { get; set; }
-        public Member_Role Member_Id{ get; set; }
+        //public Member_Role Member_Id{ get; set; }
         public Cart Cart_Status_Id { get; set; }
 
 

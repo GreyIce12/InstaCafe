@@ -9,7 +9,7 @@ namespace InstaCafe1.Models
     {
 
         public int Shipping_Detail_Id { get; set; }
-        public Member_Role Member_Id  { get; set; }
+        //public Member_Role Member_Id  { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
 
