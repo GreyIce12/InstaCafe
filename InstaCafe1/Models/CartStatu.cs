@@ -5,17 +5,16 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-#nullable disable
+#nullable enable
 
-namespace InstaCafe.Models
+namespace InstaCafe1.Models
 {
     [Table("Cart_Status")]
-    public partial class CartStatus
+    public partial class CartStatu
     {
         [Key]
         public int CartStatusId { get; set; }
-        [Column("CartStatus")]
         [StringLength(500)]
-        public string CartStatus1 { get; set; }
+        public string? CartStatus { get; set; }
     }
 }

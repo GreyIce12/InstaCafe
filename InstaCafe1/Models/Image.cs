@@ -5,10 +5,11 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-#nullable disable
+#nullable enable
 
-namespace InstaCafe.Models
+namespace InstaCafe1.Models
 {
+    [Table("Image")]
     public partial class Image
     {
         [Key]
@@ -17,9 +18,9 @@ namespace InstaCafe.Models
         [Required]
         [Column("Image_Title")]
         [StringLength(255)]
-        public string ImageTitle { get; set; }
+        public string ImageTitle { get; set; } = default!;
         [Required]
         [Column("Image_Pic")]
-        public string ImagePic { get; set; }
+        public string ImagePic { get; set; } = default!;
     }
 }

@@ -5,35 +5,35 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-#nullable disable
+#nullable enable
 
-namespace InstaCafe.Models
+namespace InstaCafe1.Models
 {
     [Table("Order_Details")]
-    public partial class OrderDetails
+    public partial class OrderDetail
     {
         [Key]
         public int OrderDetailsId { get; set; }
         public int? UserId { get; set; }
         [StringLength(500)]
-        public string Addresses { get; set; }
+        public string? Addresses { get; set; }
         [StringLength(500)]
-        public string City { get; set; }
+        public string? City { get; set; }
         [StringLength(500)]
-        public string States { get; set; }
+        public string? States { get; set; }
         [StringLength(500)]
-        public string Country { get; set; }
+        public string? Country { get; set; }
         [StringLength(50)]
-        public string ZipCode { get; set; }
+        public string? ZipCode { get; set; }
         public int? OrderId { get; set; }
         [Column("Amount_Paid", TypeName = "decimal(18, 0)")]
         public decimal? AmountPaid { get; set; }
         [Column("Payment_Type")]
         [StringLength(50)]
-        public string PaymentType { get; set; }
+        public string? PaymentType { get; set; }
 
         [ForeignKey(nameof(UserId))]
-        [InverseProperty(nameof(Users.OrderDetails))]
-        public virtual Users User { get; set; }
+        [InverseProperty("OrderDetails")]
+        public virtual User User { get; set; } = default!;
     }
 }

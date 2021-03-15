@@ -5,16 +5,17 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-#nullable disable
+#nullable enable
 
-namespace InstaCafe.Models
+namespace InstaCafe1.Models
 {
+    [Table("Product")]
     [Index(nameof(ProuctName), Name = "UQ__Product__0D828C1A2ECE8D9B", IsUnique = true)]
     public partial class Product
     {
         public Product()
         {
-            Cart = new HashSet<Cart>();
+            Carts = new HashSet<Cart>();
         }
 
         [Key]
@@ -22,7 +23,7 @@ namespace InstaCafe.Models
         public int ProductId { get; set; }
         [Column("Prouct_Name")]
         [StringLength(255)]
-        public string ProuctName { get; set; }
+        public string? ProuctName { get; set; }
         [Column("Category_ID")]
         public int CategoryId { get; set; }
         [Column("isActive")]
@@ -36,15 +37,17 @@ namespace InstaCafe.Models
         [Column("description", TypeName = "datetime")]
         public DateTime? Description { get; set; }
         [Column("Product_Image")]
-        public string ProductImage { get; set; }
+        public string? ProductImage { get; set; }
         [Column("isFeatured")]
         public bool? IsFeatured { get; set; }
         public int? Quantity { get; set; }
+        [Column(TypeName = "decimal(18, 0)")]
+        public decimal? Price { get; set; }
 
         [ForeignKey(nameof(CategoryId))]
-        [InverseProperty("Product")]
-        public virtual Category Category { get; set; }
-        [InverseProperty("Product")]
-        public virtual ICollection<Cart> Cart { get; set; }
+        [InverseProperty("Products")]
+        public virtual Category? Category { get; set; }
+        [InverseProperty(nameof(Cart.Product))]
+        public virtual ICollection<Cart> Carts { get; set; }
     }
 }

@@ -2,11 +2,10 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using InstaCafe.Models;
 
 #nullable disable
 
-namespace InstaCafe.Data
+namespace InstaCafe1.Models
 {
     public partial class InstacafeContext : DbContext
     {
@@ -19,15 +18,15 @@ namespace InstaCafe.Data
         {
         }
 
-        public virtual DbSet<Cart> Cart { get; set; }
-        public virtual DbSet<CartStatus> CartStatus { get; set; }
-        public virtual DbSet<Category> Category { get; set; }
-        public virtual DbSet<Image> Image { get; set; }
-        public virtual DbSet<OrderDetails> OrderDetails { get; set; }
-        public virtual DbSet<Product> Product { get; set; }
-        public virtual DbSet<Role> Role { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
-        public virtual DbSet<UsersRole> UsersRole { get; set; }
+        public virtual DbSet<Cart> Carts { get; set; }
+        public virtual DbSet<CartStatu> CartStatus { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Image> Images { get; set; }
+        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UsersRole> UsersRoles { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -47,15 +46,18 @@ namespace InstaCafe.Data
                 entity.Property(e => e.CartId).ValueGeneratedNever();
 
                 entity.HasOne(d => d.Product)
-                    .WithMany(p => p.Cart)
+                    .WithMany(p => p.Carts)
                     .HasForeignKey(d => d.ProductId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Cart__Product_Id__2D27B809");
             });
 
-            modelBuilder.Entity<CartStatus>(entity =>
+            modelBuilder.Entity<CartStatu>(entity =>
             {
-                entity.Property(e => e.CartStatus1).IsUnicode(false);
+                entity.HasKey(e => e.CartStatusId)
+                    .HasName("PK__Cart_Sta__031908A82145CE86");
+
+                entity.Property(e => e.CartStatus).IsUnicode(false);
             });
 
             modelBuilder.Entity<Category>(entity =>
@@ -74,8 +76,11 @@ namespace InstaCafe.Data
                 entity.Property(e => e.ImageTitle).IsUnicode(false);
             });
 
-            modelBuilder.Entity<OrderDetails>(entity =>
+            modelBuilder.Entity<OrderDetail>(entity =>
             {
+                entity.HasKey(e => e.OrderDetailsId)
+                    .HasName("PK__Order_De__9DD74DBD6A3A6D72");
+
                 entity.Property(e => e.Addresses).IsUnicode(false);
 
                 entity.Property(e => e.City).IsUnicode(false);
@@ -103,7 +108,7 @@ namespace InstaCafe.Data
                 entity.Property(e => e.ProuctName).IsUnicode(false);
 
                 entity.HasOne(d => d.Category)
-                    .WithMany(p => p.Product)
+                    .WithMany(p => p.Products)
                     .HasForeignKey(d => d.CategoryId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Product__Quantit__2A4B4B5E");
@@ -114,11 +119,8 @@ namespace InstaCafe.Data
                 entity.Property(e => e.RoleName).IsUnicode(false);
             });
 
-            modelBuilder.Entity<Users>(entity =>
+            modelBuilder.Entity<User>(entity =>
             {
-                entity.HasKey(e => e.UserId)
-                    .HasName("PK__Users__1788CC4C9379A457");
-
                 entity.Property(e => e.FirstName).IsUnicode(false);
 
                 entity.Property(e => e.LastName).IsUnicode(false);
@@ -132,7 +134,7 @@ namespace InstaCafe.Data
                     .HasName("PK__Users_Ro__134E488C27C2FA35");
 
                 entity.HasOne(d => d.Role)
-                    .WithMany(p => p.UsersRole)
+                    .WithMany(p => p.UsersRoles)
                     .HasForeignKey(d => d.RoleId)
                     .HasConstraintName("FK__Users_Rol__Role___3B75D760");
             });

@@ -5,10 +5,11 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-#nullable disable
+#nullable enable
 
-namespace InstaCafe.Models
+namespace InstaCafe1.Models
 {
+    [Table("Cart")]
     public partial class Cart
     {
         [Key]
@@ -21,7 +22,7 @@ namespace InstaCafe.Models
         public int? CartStatusId { get; set; }
 
         [ForeignKey(nameof(ProductId))]
-        [InverseProperty("Cart")]
-        public virtual Product Product { get; set; }
+        [InverseProperty("Carts")]
+        public virtual Product? Product { get; set; }
     }
 }

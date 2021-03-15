@@ -5,16 +5,17 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-#nullable disable
+#nullable enable
 
-namespace InstaCafe.Models
+namespace InstaCafe1.Models
 {
+    [Table("Category")]
     [Index(nameof(CategoryName), Name = "UQ__Category__B35EB4199D983D8F", IsUnique = true)]
     public partial class Category
     {
         public Category()
         {
-            Product = new HashSet<Product>();
+            Products = new HashSet<Product>();
         }
 
         [Key]
@@ -22,13 +23,13 @@ namespace InstaCafe.Models
         public int CategoryId { get; set; }
         [Column("Category_Name")]
         [StringLength(255)]
-        public string CategoryName { get; set; }
+        public string? CategoryName { get; set; }
         [Column("isActive")]
         public bool IsActive { get; set; }
         [Column("isDelete")]
         public bool IsDelete { get; set; }
 
-        [InverseProperty("Category")]
-        public virtual ICollection<Product> Product { get; set; }
+        [InverseProperty(nameof(Product.Category))]
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

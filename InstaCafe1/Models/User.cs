@@ -5,30 +5,30 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-#nullable disable
+#nullable enable
 
-namespace InstaCafe.Models
+namespace InstaCafe1.Models
 {
     [Index(nameof(EmailId), Name = "UQ__Users__7ED91ACEFEDA43C9", IsUnique = true)]
     [Index(nameof(LastName), Name = "UQ__Users__8D0C18F7EB443455", IsUnique = true)]
-    public partial class Users
+    public partial class User
     {
-        public Users()
+        public User()
         {
-            OrderDetails = new HashSet<OrderDetails>();
+            OrderDetails = new HashSet<OrderDetail>();
         }
 
         [Key]
         public int UserId { get; set; }
         [Column("First_Name")]
         [StringLength(100)]
-        public string FirstName { get; set; }
+        public string? FirstName { get; set; }
         [Column("Last_Name")]
         [StringLength(100)]
-        public string LastName { get; set; }
+        public string? LastName { get; set; }
         public int? EmailId { get; set; }
         [StringLength(20)]
-        public string Password { get; set; }
+        public string? Password { get; set; }
         [Column("isActive")]
         public bool? IsActive { get; set; }
         [Column("isDelete")]
@@ -38,7 +38,7 @@ namespace InstaCafe.Models
         [Column("Modified_Date", TypeName = "datetime")]
         public DateTime? ModifiedDate { get; set; }
 
-        [InverseProperty("User")]
-        public virtual ICollection<OrderDetails> OrderDetails { get; set; }
+        [InverseProperty(nameof(OrderDetail.User))]
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

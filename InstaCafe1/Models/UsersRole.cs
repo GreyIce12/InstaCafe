@@ -5,9 +5,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-#nullable disable
+#nullable enable
 
-namespace InstaCafe.Models
+namespace InstaCafe1.Models
 {
     [Table("Users_Role")]
     public partial class UsersRole
@@ -21,7 +21,7 @@ namespace InstaCafe.Models
         public int? RoleId { get; set; }
 
         [ForeignKey(nameof(RoleId))]
-        [InverseProperty("UsersRole")]
-        public virtual Role Role { get; set; }
+        [InverseProperty("UsersRoles")]
+        public virtual Role Role { get; set; } = default!;
     }
 }

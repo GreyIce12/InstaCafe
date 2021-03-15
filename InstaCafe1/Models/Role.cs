@@ -5,16 +5,17 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-#nullable disable
+#nullable enable
 
-namespace InstaCafe.Models
+namespace InstaCafe1.Models
 {
+    [Table("Role")]
     [Index(nameof(RoleName), Name = "UQ__Role__035DB7491D963308", IsUnique = true)]
     public partial class Role
     {
         public Role()
         {
-            UsersRole = new HashSet<UsersRole>();
+            UsersRoles = new HashSet<UsersRole>();
         }
 
         [Key]
@@ -22,9 +23,9 @@ namespace InstaCafe.Models
         public int RoleId { get; set; }
         [Column("Role_Name")]
         [StringLength(50)]
-        public string RoleName { get; set; }
+        public string? RoleName { get; set; }
 
-        [InverseProperty("Role")]
-        public virtual ICollection<UsersRole> UsersRole { get; set; }
+        [InverseProperty(nameof(UsersRole.Role))]
+        public virtual ICollection<UsersRole> UsersRoles { get; set; }
     }
 }
