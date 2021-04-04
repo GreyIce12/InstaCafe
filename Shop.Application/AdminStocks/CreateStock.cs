@@ -8,11 +8,11 @@ namespace Shop.Application.AdminStocks
     
     public class CreateStock
     {
-        private ApplicationDbContext _ctx;
+        private readonly ApplicationDbContext _ctx;
 
         public CreateStock(ApplicationDbContext ctx)
         {
-            ctx = _ctx;
+            _ctx = ctx;
         }
 
         public async Task<Response> Do(Request request)

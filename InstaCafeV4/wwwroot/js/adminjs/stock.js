@@ -1,21 +1,18 @@
 ﻿var app = new Vue({
-
     el: '#app',
-
     data: {
         products: [],
+        selectedProduct: null,
         newStock: {
-            id: 0,
+            productId: 0,
             description: "Size",
-            Quantity:10
+            qty: 10
         }
     },
-    mounted: {
-
-        getStock();
+    mounted() {
+        this.getStock();
     },
     methods: {
-
         getStock() {
             this.loading = true;
             axios.get('/Admin/stocks')
@@ -30,11 +27,60 @@
                     this.loading = false;
                 });
         },
-        selectProduct(product) {
-            this.selectProduct = product;
+        updateStock() {
+            this.loading = true;
+            axios.put('/Admin/stocks', {
+                stock: this.selectedProduct.stock.map(x => {
+                    return {
+                        id: x.id,
+                        description: x.description,
+                        quantity: x.quantity,
+                        productId: this.selectedProduct.id
+                    };
+                })
+            } )
+                .then(res => {
+                    console.log(res);
+                    this.selectedProduct.stock.splice(index, 1);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+                .then(() => {
+                    this.loading = false;
+                });
         },
-    },
-    computed{
-
-}
+        deleteStock(id, index) {
+            this.loading = true;
+            axios.delete('/Admin/stocks/' + id)
+                .then(res => {
+                    console.log(res);
+                    this.selectedProduct.stock.splice(index, 1);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+                .then(() => {
+                    this.loading = false;
+                });
+        },
+        addStock() {
+            this.loading = true;
+            axios.post('/Admin/stocks', this.newStock)
+                .then(res => {
+                    console.log(res);
+                    this.selectedProduct.stock.push(res.data);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+                .then(() => {
+                    this.loading = false;
+                });
+        },
+        selectProduct(product) {
+            this.selectedProduct = product;
+            this.newStock.productId = product.id;
+        }
+    }
 })

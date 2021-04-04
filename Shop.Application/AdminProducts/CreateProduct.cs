@@ -14,15 +14,15 @@ namespace Shop.Application.AdminProducts
             _context = context;
         }
 
-        public  async Task<Response> Do(Request request)
+        public async Task<Response> Do(Request request)
         {
             var product = new Product
             {
                 Name = request.Name,
                 Description = request.Description,
                 Price = request.Price
-            
-        };
+
+            };
             _context.Products.Add(product);
 
             await _context.SaveChangesAsync();
@@ -36,14 +36,14 @@ namespace Shop.Application.AdminProducts
 
             };
         }
-              public class Request
-            {
-                public string Name { get; set; }
-                public string Description { get; set; }
+        public class Request
+        {
+            public string Name { get; set; }
+            public string Description { get; set; }
 
-                [Column(TypeName = "decimal(18,4)")]
-                public decimal Price { get; set; }
-            }
+            [Column(TypeName = "decimal(18,4)")]
+            public decimal Price { get; set; }
+        }
 
         public class Response
         {
@@ -55,5 +55,5 @@ namespace Shop.Application.AdminProducts
         }
     }
 
-    
+
 }

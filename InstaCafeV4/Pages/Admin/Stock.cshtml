@@ -1,9 +1,11 @@
 ﻿@page
 @model StockModel
 @{
+    Layout = "Admin_Layout.cshtml";
+    ViewData["Title"] = "Admin Page";
 }
 
-<div id="app">
+<div id="app" class="container">
     <div class="columns">
         <div class="column is-3">
             <table class="table">
@@ -13,10 +15,10 @@
             </table>
         </div>
         <div class="column is-6" v-if="selectedProduct">
-            <table class="table">
+            <table class="table" >
                 <tr v-for="(stock, index) in selectedProduct.stock">
                     <td><input class="input" v-model="stock.description" /></td>
-                    <td><input class="input" v-model="stock.qty" /></td>
+                    <td><input class="input" v-model="stock.quantity" /></td>
                     <td><a class="has-text-danger" @@click="deleteStock(stock.id, index)">Delete</a></td>
                 </tr>
             </table>
@@ -33,7 +35,7 @@
             </div>
             <div class="field">
                 <div class="control">
-                    <input class="input" v-model="newStock.qty" />
+                    <input class="input" v-model="newStock.quantity" />
                 </div>
             </div>
             <a class="button is-success" @@click="addStock">Add</a>
@@ -43,8 +45,8 @@
 
 
 
+
 @section scripts {
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="~/js/adminjs/product.js"></script>
+
+    <script src="~/js/adminjs/stock.js"></script>
 }
