@@ -8,4 +8,15 @@
     <ProjectReference Include="..\Shop.Database\Shop.Database.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Products\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Extensions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.5" />
+    <PackageReference Include="Stripe.net" Version="39.43.0" />
+  </ItemGroup>
+
 </Project>

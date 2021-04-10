@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Shop.Application.Cart.GetCart.Response>
+
+@{
+
+
+}
+
+
+<div style="color: black ">
+    <h2>CART PRODUCTS</h2>
+    @foreach (var product in Model)
+    {
+
+        <p> @product.Name</p>
+        <p> @product.Price</p>
+        <p> @product.Quantity</p>
+        <p> @product.StockId</p>
+
+        <hr />
+    }
+
+
+</div>

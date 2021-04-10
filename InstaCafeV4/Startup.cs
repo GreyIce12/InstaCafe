@@ -10,6 +10,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Shop.Database;
 using Microsoft.EntityFrameworkCore;
+using Stripe;
+using Microsoft.AspNetCore.Identity;
 
 namespace InstaCafeV4
 {
@@ -27,8 +29,20 @@ namespace InstaCafeV4
         {
             services.AddRazorPages();
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration["DefaultConnection"]));
+
+            services.DefaultIdentity<IdentityUser>()
+                .AddEntity
+
             services.AddControllersWithViews().AddNewtonsoftJson(options =>
             options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+            services.AddSession(options =>
+            {
+                options.Cookie.Name = "Cart";
+                options.Cookie.MaxAge = TimeSpan.FromMinutes(20);
+
+            });
+
+            StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["SecretKey"];
         }
 
         
@@ -51,6 +65,10 @@ namespace InstaCafeV4
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSession();
+
+            
 
             app.UseEndpoints(endpoints =>
             {

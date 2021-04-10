@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Shop.Application.Product;
+using Shop.Application.Products;
 using System.Collections.Generic;
 using Shop.Database;
 

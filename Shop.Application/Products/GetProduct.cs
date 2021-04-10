@@ -4,8 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace Shop.Application.Product
+namespace Shop.Application.Products
 {
     public class GetProduct
     {
@@ -16,10 +17,32 @@ namespace Shop.Application.Product
             _context = context;
         }
 
-        public ProductViewModel Do(string name) =>
+        public async Task<ProductViewModel> Do(string name)
+        {
 
-            _context.Products
-            .Include(x => x.Stock)
+            var stockOnHold = _context.StockOnHolds.AsEnumerable().Where(x => x.ExpiryDate < DateTime.Now).ToList();
+
+            if (stockOnHold.Count > 0)
+            {
+                var stockToReturn = _context.Stocks.Where(x => stockOnHold.Any(y => y.StockId == x.Id)).ToList();
+
+                foreach (var stock in stockToReturn)
+                {
+                    stock.Quantity = stock.Quantity + stockOnHold.FirstOrDefault(x => x.StockId == stock.Id).Quantity;
+                }
+
+                _context.StockOnHolds.RemoveRange(stockOnHold);
+
+                await _context.SaveChangesAsync();
+            }
+            
+
+
+
+
+            return _context.Products
+            
+                .Include(x => x.Stock)
             .Where(x => x.Name == name)
             .Select(x => new ProductViewModel
             {
@@ -28,16 +51,16 @@ namespace Shop.Application.Product
                 Description = x.Description,
                 Price = $"$ {x.Price:N2}",
 
-                Stock  = x.Stock.Select(y => new StockViewModel
+                Stock = x.Stock.Select(y => new StockViewModel
                 {
                     Id = y.Id,
                     Description = y.Description,
-                    Instock = y.Quantity >0
+                    Instock = y.Quantity > 0
                 })
             })
             .FirstOrDefault();
 
-
+        }
 
         public class ProductViewModel
         {

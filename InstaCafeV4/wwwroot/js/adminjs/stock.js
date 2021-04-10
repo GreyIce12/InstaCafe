@@ -38,7 +38,7 @@
                         productId: this.selectedProduct.id
                     };
                 })
-            } )
+            })
                 .then(res => {
                     console.log(res);
                     this.selectedProduct.stock.splice(index, 1);

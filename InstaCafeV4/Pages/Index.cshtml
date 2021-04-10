@@ -4,18 +4,21 @@
     ViewData["Title"] = "Home page";
 }
 
-<div>
+<div style="margin-top:25px">
 
-    @{ 
+    @{
         foreach (var p in Model.Products)
         {
-        <a asp-page="Product" asp-route-name="@p.Name" >
+            <a asp-page="Product" asp-route-name="@p.Name.Replace(" ","-")">
 
-            
-            @p.Name - @p.Description - @p.Price
 
-        </a>
+                @p.Name - @p.Description - @p.Price
+                <br />
+
+            </a>
         }
     }
 
 </div>
+
+@await Component.InvokeAsync("Cart")

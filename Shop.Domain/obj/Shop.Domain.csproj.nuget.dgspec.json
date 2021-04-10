@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\moniq\\source\\repos\\InstaCafeV4\\Shop.Domain\\Shop.Domain.csproj": {}
+    "C:\\Users\\moniq\\OneDrive\\Desktop\\Web Development\\InstaCafe-master\\Shop.Domain\\Shop.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\moniq\\source\\repos\\InstaCafeV4\\Shop.Domain\\Shop.Domain.csproj": {
+    "C:\\Users\\moniq\\OneDrive\\Desktop\\Web Development\\InstaCafe-master\\Shop.Domain\\Shop.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\moniq\\source\\repos\\InstaCafeV4\\Shop.Domain\\Shop.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\moniq\\OneDrive\\Desktop\\Web Development\\InstaCafe-master\\Shop.Domain\\Shop.Domain.csproj",
         "projectName": "Shop.Domain",
-        "projectPath": "C:\\Users\\moniq\\source\\repos\\InstaCafeV4\\Shop.Domain\\Shop.Domain.csproj",
+        "projectPath": "C:\\Users\\moniq\\OneDrive\\Desktop\\Web Development\\InstaCafe-master\\Shop.Domain\\Shop.Domain.csproj",
         "packagesPath": "C:\\Users\\moniq\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\moniq\\source\\repos\\InstaCafeV4\\Shop.Domain\\obj\\",
+        "outputPath": "C:\\Users\\moniq\\OneDrive\\Desktop\\Web Development\\InstaCafe-master\\Shop.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\moniq\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,12 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Stripe.net": {
+              "target": "Package",
+              "version": "[39.43.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

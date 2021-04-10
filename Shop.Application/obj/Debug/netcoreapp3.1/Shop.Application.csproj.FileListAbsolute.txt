@@ -12,3 +12,17 @@ C:\Users\moniq\source\repos\InstaCafeV4\Shop.Application\bin\Debug\netcoreapp3.1
 C:\Users\moniq\source\repos\InstaCafeV4\Shop.Application\bin\Debug\netcoreapp3.1\Shop.Database.pdb
 C:\Users\moniq\source\repos\InstaCafeV4\Shop.Application\bin\Debug\netcoreapp3.1\Shop.Domain.pdb
 C:\Users\moniq\source\repos\InstaCafeV4\Shop.Application\obj\Debug\netcoreapp3.1\Shop.Application.csproj.CopyComplete
+C:\Users\moniq\OneDrive\Desktop\Web Development\InstaCafe-master\Shop.Application\bin\Debug\netcoreapp3.1\Shop.Application.deps.json
+C:\Users\moniq\OneDrive\Desktop\Web Development\InstaCafe-master\Shop.Application\bin\Debug\netcoreapp3.1\Shop.Application.dll
+C:\Users\moniq\OneDrive\Desktop\Web Development\InstaCafe-master\Shop.Application\bin\Debug\netcoreapp3.1\Shop.Application.pdb
+C:\Users\moniq\OneDrive\Desktop\Web Development\InstaCafe-master\Shop.Application\bin\Debug\netcoreapp3.1\Shop.Database.dll
+C:\Users\moniq\OneDrive\Desktop\Web Development\InstaCafe-master\Shop.Application\bin\Debug\netcoreapp3.1\Shop.Domain.dll
+C:\Users\moniq\OneDrive\Desktop\Web Development\InstaCafe-master\Shop.Application\bin\Debug\netcoreapp3.1\Shop.Database.pdb
+C:\Users\moniq\OneDrive\Desktop\Web Development\InstaCafe-master\Shop.Application\bin\Debug\netcoreapp3.1\Shop.Domain.pdb
+C:\Users\moniq\OneDrive\Desktop\Web Development\InstaCafe-master\Shop.Application\obj\Debug\netcoreapp3.1\Shop.Application.csprojAssemblyReference.cache
+C:\Users\moniq\OneDrive\Desktop\Web Development\InstaCafe-master\Shop.Application\obj\Debug\netcoreapp3.1\Shop.Application.AssemblyInfoInputs.cache
+C:\Users\moniq\OneDrive\Desktop\Web Development\InstaCafe-master\Shop.Application\obj\Debug\netcoreapp3.1\Shop.Application.AssemblyInfo.cs
+C:\Users\moniq\OneDrive\Desktop\Web Development\InstaCafe-master\Shop.Application\obj\Debug\netcoreapp3.1\Shop.Application.csproj.CoreCompileInputs.cache
+C:\Users\moniq\OneDrive\Desktop\Web Development\InstaCafe-master\Shop.Application\obj\Debug\netcoreapp3.1\Shop.Application.csproj.CopyComplete
+C:\Users\moniq\OneDrive\Desktop\Web Development\InstaCafe-master\Shop.Application\obj\Debug\netcoreapp3.1\Shop.Application.dll
+C:\Users\moniq\OneDrive\Desktop\Web Development\InstaCafe-master\Shop.Application\obj\Debug\netcoreapp3.1\Shop.Application.pdb

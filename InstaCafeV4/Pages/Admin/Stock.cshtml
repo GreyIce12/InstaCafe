@@ -15,7 +15,7 @@
             </table>
         </div>
         <div class="column is-6" v-if="selectedProduct">
-            <table class="table" >
+            <table class="table">
                 <tr v-for="(stock, index) in selectedProduct.stock">
                     <td><input class="input" v-model="stock.description" /></td>
                     <td><input class="input" v-model="stock.quantity" /></td>

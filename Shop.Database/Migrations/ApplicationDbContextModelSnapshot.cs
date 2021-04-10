@@ -16,7 +16,7 @@ namespace Shop.Database.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.4")
+                .HasAnnotation("ProductVersion", "5.0.5")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -231,10 +231,25 @@ namespace Shop.Database.Migrations
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("OrderRef")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PostCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StripeReference")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -242,19 +257,22 @@ namespace Shop.Database.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("Shop.Domain.Models.OrderProduct", b =>
+            modelBuilder.Entity("Shop.Domain.Models.OrderStock", b =>
                 {
-                    b.Property<int>("ProductId")
+                    b.Property<int>("StockId")
                         .HasColumnType("int");
 
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
 
-                    b.HasKey("ProductId", "OrderId");
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("StockId", "OrderId");
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("OrderProducts");
+                    b.ToTable("OrderStocks");
                 });
 
             modelBuilder.Entity("Shop.Domain.Models.Product", b =>
@@ -299,6 +317,32 @@ namespace Shop.Database.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("Stocks");
+                });
+
+            modelBuilder.Entity("Shop.Domain.Models.StockOnHold", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("ExpiryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SessionId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StockId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StockId");
+
+                    b.ToTable("StockOnHolds");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -352,23 +396,23 @@ namespace Shop.Database.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Shop.Domain.Models.OrderProduct", b =>
+            modelBuilder.Entity("Shop.Domain.Models.OrderStock", b =>
                 {
                     b.HasOne("Shop.Domain.Models.Order", "Order")
-                        .WithMany("OrderProducts")
+                        .WithMany("OrderStocks")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Shop.Domain.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
+                    b.HasOne("Shop.Domain.Models.Stock", "Stock")
+                        .WithMany("OrderStocks")
+                        .HasForeignKey("StockId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Order");
 
-                    b.Navigation("Product");
+                    b.Navigation("Stock");
                 });
 
             modelBuilder.Entity("Shop.Domain.Models.Stock", b =>
@@ -382,14 +426,30 @@ namespace Shop.Database.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("Shop.Domain.Models.StockOnHold", b =>
+                {
+                    b.HasOne("Shop.Domain.Models.Stock", "Stock")
+                        .WithMany()
+                        .HasForeignKey("StockId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Stock");
+                });
+
             modelBuilder.Entity("Shop.Domain.Models.Order", b =>
                 {
-                    b.Navigation("OrderProducts");
+                    b.Navigation("OrderStocks");
                 });
 
             modelBuilder.Entity("Shop.Domain.Models.Product", b =>
                 {
                     b.Navigation("Stock");
+                });
+
+            modelBuilder.Entity("Shop.Domain.Models.Stock", b =>
+                {
+                    b.Navigation("OrderStocks");
                 });
 #pragma warning restore 612, 618
         }

@@ -7,3 +7,12 @@ C:\Users\moniq\source\repos\InstaCafeV4\Shop.Domain\obj\Debug\netcoreapp3.1\Shop
 C:\Users\moniq\source\repos\InstaCafeV4\Shop.Domain\obj\Debug\netcoreapp3.1\Shop.Domain.dll
 C:\Users\moniq\source\repos\InstaCafeV4\Shop.Domain\obj\Debug\netcoreapp3.1\Shop.Domain.pdb
 C:\Users\moniq\source\repos\InstaCafeV4\Shop.Domain\obj\Debug\netcoreapp3.1\Shop.Domain.csprojAssemblyReference.cache
+C:\Users\moniq\OneDrive\Desktop\Web Development\InstaCafe-master\Shop.Domain\bin\Debug\netcoreapp3.1\Shop.Domain.deps.json
+C:\Users\moniq\OneDrive\Desktop\Web Development\InstaCafe-master\Shop.Domain\bin\Debug\netcoreapp3.1\Shop.Domain.dll
+C:\Users\moniq\OneDrive\Desktop\Web Development\InstaCafe-master\Shop.Domain\bin\Debug\netcoreapp3.1\Shop.Domain.pdb
+C:\Users\moniq\OneDrive\Desktop\Web Development\InstaCafe-master\Shop.Domain\obj\Debug\netcoreapp3.1\Shop.Domain.AssemblyInfoInputs.cache
+C:\Users\moniq\OneDrive\Desktop\Web Development\InstaCafe-master\Shop.Domain\obj\Debug\netcoreapp3.1\Shop.Domain.AssemblyInfo.cs
+C:\Users\moniq\OneDrive\Desktop\Web Development\InstaCafe-master\Shop.Domain\obj\Debug\netcoreapp3.1\Shop.Domain.csproj.CoreCompileInputs.cache
+C:\Users\moniq\OneDrive\Desktop\Web Development\InstaCafe-master\Shop.Domain\obj\Debug\netcoreapp3.1\Shop.Domain.dll
+C:\Users\moniq\OneDrive\Desktop\Web Development\InstaCafe-master\Shop.Domain\obj\Debug\netcoreapp3.1\Shop.Domain.pdb
+C:\Users\moniq\OneDrive\Desktop\Web Development\InstaCafe-master\Shop.Domain\obj\Debug\netcoreapp3.1\Shop.Domain.csprojAssemblyReference.cache

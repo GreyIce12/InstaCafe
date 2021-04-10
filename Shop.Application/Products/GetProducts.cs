@@ -5,7 +5,7 @@ using System.Text;
 using System.Linq;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Shop.Application.Product
+namespace Shop.Application.Products
 {
     public class GetProducts
     {
