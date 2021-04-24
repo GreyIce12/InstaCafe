@@ -4,21 +4,453 @@
     ViewData["Title"] = "Home page";
 }
 
-<div style="margin-top:25px">
-
-    @{
-        foreach (var p in Model.Products)
-        {
-            <a asp-page="Product" asp-route-name="@p.Name.Replace(" ","-")">
 
 
-                @p.Name - @p.Description - @p.Price
-                <br />
+<section class="home-slider owl-carousel">
+    <div class="slider-item" style="background: url(images/caf2.jpeg);">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
 
-            </a>
-        }
-    }
+                <div class="col-md-8 col-sm-12 text-center ftco-animate">
+                    <span class="subheading">Welcome</span>
+                    <h1 class="mb-4">No More Long lines</h1>
+                    <p class="mb-4 mb-md-5">This is the end of congestion in the cafeteria during rush hour</p>
+                    <p><a asp-page="Menu" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a asp-page="Menu" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
+                </div>
 
-</div>
+            </div>
+        </div>
+    </div>
 
-@await Component.InvokeAsync("Cart")
+    <div class="slider-item" style="background: url(images/caf1.jpeg);">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+
+                <div class="col-md-8 col-sm-12 text-center ftco-animate">
+                    <span class="subheading">Welcome</span>
+                    <h1 class="mb-4">Amazing Taste &amp; Beautiful Place</h1>
+                    <p class="mb-4 mb-md-5">Best place, best time, best way to get the right taste at the right time.</p>
+                    <p><a asp-page="Menu" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a asp-page="Menu" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="slider-item" style="background: url(images/caf5.jpeg);">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+
+                <div class="col-md-8 col-sm-12 text-center ftco-animate">
+                    <span class="subheading">Welcome</span>
+                    <h1 class="mb-4">Creamy Hot and Ready to Serve</h1>
+                    <p class="mb-4 mb-md-5">Ready and waiting, like a home-cooked meal. We also have snacks and dessert to top off your pleasant delight.</p>
+                    <p><a asp-page="Menu" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a asp-page="Menu" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="ftco-about d-md-flex">
+    <div class="one-half img" style="background: url(images/ncu.jpg);"></div>
+    <div class="one-half ftco-animate">
+        <div class="overlap">
+            <div class="heading-section ftco-animate ">
+                <span class="subheading">Discover</span>
+                <h2 class="mb-4">Our Story</h2>
+            </div>
+            <div>
+                <p>As students at NCU we realised that there was an issue with the long lines and congestion in the cafeteria. We sought to resolve this issue in the wake of the pandemic and came up with this solution, InstaCafé. with this, there will be more order and functionality in the Cafe and this will greatly improve customer service.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section ftco-services">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 ftco-animate">
+                <div class="media d-block text-center block-6 services">
+                    <div class="icon d-flex justify-content-center align-items-center mb-5">
+                        <span class="flaticon-choices"></span>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="heading">Easy to Order</h3>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 ftco-animate">
+                <div class="media d-block text-center block-6 services">
+                    <div class="icon d-flex justify-content-center align-items-center mb-5">
+                        <span class="flaticon-delivery-truck"></span>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="heading">Fast Preparation Time</h3>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 ftco-animate">
+                <div class="media d-block text-center block-6 services">
+                    <div class="icon d-flex justify-content-center align-items-center mb-5">
+                        <span class="flaticon-coffee-bean"></span>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="heading">Quality Service</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 pr-md-5">
+                <div class="heading-section text-md-right ftco-animate">
+                    <span class="subheading">Discover</span>
+                    <h2 class="mb-4">Our Menu</h2>
+                    <p class="mb-4">
+                        NCU Cafeteria has a wide variety of food and supplies at your reach. With this wide variety of items, INSTACAFÉ wishes to provide a fast and efficient way for students and staff to purchase and receive their order. We aim to help enforce the practice of social distancing within the cafeteria while reducing the congestion to the benefit of customers.
+                    </p>
+                    <p><a asp-page="Menu" class="btn btn-primary btn-outline-primary px-4 py-3">View Full Menu</a></p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="menu-entry">
+                            <div class="img" style="background-image: url(images/caf6.jpeg);"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="menu-entry mt-lg-4">
+                            <div class="img" style="background-image: url(images/caf7.jpeg);"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="menu-entry">
+                            <div class="img" style="background-image: url(images/caf10.jpeg);"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="menu-entry mt-lg-4">
+                            <div  class="img" style="background-image: url(images/caf9.jpeg);"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+            <div class="col-md-7 heading-section ftco-animate text-center">
+                <span class="subheading">InstaCafé</span><br>
+                <h2 class="mb-4">Best Ordering Service at NCU</h2>
+                <p>
+                    With this new era upon us, technology has become the new dependency of humans for almost any task, therefore our proposed improvements would be to utilize our team’s project to solve the problem we face by implementing it into NCU’s system to encourage more online projects to be done.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+
+            @{
+                foreach (var p in Model.Products.Take(4))
+                {
+
+                    <div class="col-md-3" >
+                        <a></a>
+                        <div class="menu-entry">
+                            @if (p.Name == "Apple Pie")
+                            {
+
+                                <a class=" img " style="background-image: url(Images/apple-pie.jpg);"></a>
+
+                            }
+                            @if (p.Name == "Ice Cream")
+                            {
+
+                                <a class=" img " style="background-image: url(Images/ice-cream.jpg);"></a>
+
+                            }
+                            @if (p.Name == "Potato Pudding")
+                            {
+
+                                <a class=" img " style="background-image: url(Images/potato-pudding.jpg);"></a>
+
+                            }
+
+                            @if (p.Name == "Orange Juice")
+                            {
+
+                                <a class=" img " style="background-image: url(Images/drink-1.jpg);"></a>
+
+                            }
+                            @if (p.Name == "Sorrel Juice")
+                            {
+
+                                <a class=" img " style="background-image: url(Images/drink-8.jpg);"></a>
+
+                            }
+                            @if (p.Name == "Soda")
+                            {
+                                <a class=" img " style="background-image: url(Images/soda.jpg);"></a>
+                            }
+                            @if (p.Name == "Grilled Cheese Sandwich")
+                            {
+
+                                <a class=" img " style="background-image: url(Images/burger-3.jpg);"></a>
+
+                            }
+                            @if (p.Name == "Mock Chicken")
+                            {
+
+                                <a class=" img " style="background-image: url(Images/mock-chicken.jpg);"></a>
+
+                            }
+                            @if (p.Name == "Sorrel Sauce Tipplets in Lentil Rice")
+                            {
+
+                                <a class="img " style="background-image: url(Images/tipplets.jpg);"></a>
+
+
+                            }
+                            
+                            <div class="text text-center pt-4">
+                                <h3>@p.Name</h3>
+                                <p>Select any toppings that you like.</p>
+                                <p class="price"><span>Starting at @p.Price</span></p>
+                                <p><a asp-page="Product" asp-route-name="@p.Name.Replace(" ", "-")" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
+
+                                @{
+
+                                    string cssClass = "";
+
+                                    string message = "";
+
+                                    if (p.StockCount == 0)
+                                    {
+                                        cssClass = "is-invalid";
+                                        message = "Out Of Stock";
+                                    }
+                                    else if (p.StockCount <= 10)
+                                    {
+                                        cssClass = "is-warning";
+                                        message = "Low On Stock";
+                                    }
+
+                                    @if (p.StockCount <= 10)
+                                    {
+                                        <div class="notification is-paddingless has-text-centered @cssClass">@message</div>
+                                    }
+
+                                }
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                                    }
+            }
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section class="ftco-menu">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7 heading-section text-center ftco-animate">
+                <span class="subheading">InstaCafé</span><br>
+                <h2 class="mb-4">Products in stock</h2>
+                <p>NCU Cafeteria has a wild variety you can choose from.</p>
+            </div>
+        </div>
+        <div class="row d-md-flex">
+            <div class="col-lg-12 ftco-animate p-md-5">
+                <div class="row">
+                    <div class="col-md-12 nav-link-wrap mb-5">
+                        <div class="nav ftco-animate nav-pills justify-content-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Meals</a>
+
+                            <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Drinks</a>
+
+                            <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Desserts</a>
+                        </div>
+                    </div>
+                    <div class="col-md-auto d-flex align-items-center">
+
+                        <div class="tab-content ftco-animate" id="v-pills-tabContent">
+
+
+                            <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
+                                <div class="row">
+
+                                    <div class="col-md-auto text-center ">
+                                        @{
+                                            foreach (var p in Model.Products.Take(2))
+                                            {
+
+                                                if (p.Category == "Meals")
+                                                {
+
+                                                                                <div class="menu-wrap">
+
+                                                                                    @if (p.Name == "Grilled Cheese Sandwich")
+                                                                                    {
+
+                                                                                        <a class="menu-img img mb-4" style="background-image: url(Images/burger-3.jpg);"></a>
+
+                                                                                    }
+                                                                                    @if (p.Name == "Mock Chicken")
+                                                                                    {
+
+                                                                                        <a class="menu-img img mb-4" style="background-image: url(Images/mock-chicken.jpg);"></a>
+
+                                                                                    }
+                                                                                    @if (p.Name == "Sorrel Sauce Tipplets in Lentil Rice")
+                                                                                    {
+
+                                                                                        <a class="menu-img img mb-4" style="background-image: url(Images/tipplets.jpg);"></a>
+
+                                                                                    }
+                                                                                    <div class="text">
+                                                                                        <h3><a href="#">@p.Name</a></h3>
+                                                                                        <p>@p.Description</p>
+                                                                                        <p class="price"><span>@p.Price</span></p>
+                                                                                        <p><a asp-page="Product" asp-route-name="@p.Name.Replace(" ", "-")" class="btn btn-primary btn-outline-primary">Add to cart</a></p>
+                                                                                    </div>
+                                                                                </div>
+                                                }
+                                            }
+                                        }
+                                    </div>
+                                     
+                                </div>
+
+                                
+                            </div>
+
+                            <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
+                                <div class="row">
+
+                                    <div class="col-md-auto text-center">
+                                        @{
+                                            foreach (var p in Model.Products)
+                                            {
+
+                                                if (p.Category == "Drinks")
+                                                {
+                                                                                <div class="menu-wrap">
+
+                                                                                    @if (p.Name == "Orange Juice")
+                                                                                    {
+
+                                                                                        <a class="menu-img img mb-4" style="background-image: url(Images/drink-1.jpg);"></a>
+
+                                                                                    }
+                                                                                    @if (p.Name == "Sorrel Juice")
+                                                                                    {
+
+                                                                                        <a class="menu-img img mb-4" style="background-image: url(Images/drink-8.jpg);"></a>
+
+                                                                                    }
+                                                                                    @if (p.Name == "Soda")
+                                                                                    {
+
+                                                                                        <a class="menu-img img mb-4" style="background-image: url(Images/soda.jpg);"></a>
+
+                                                                                    }
+                                                                                    <div class="text">
+                                                                                        <h3><a href="#">@p.Name</a></h3>
+                                                                                        <p>@p.Description</p>
+                                                                                        <p class="price"><span>@p.Price</span></p>
+                                                                                        <p><a asp-page="Product" asp-route-name="@p.Name.Replace(" ", "-")" class="btn btn-primary btn-outline-primary">Add to cart</a></p>
+                                                                                    </div>
+                                                                                </div>
+                                                }
+                                            }
+                                        }
+                                    </div>
+
+                                    
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
+                                <div class="row">
+
+
+
+                                    <div class="col-md-auto text-center">
+                                        @{
+                                            foreach (var p in Model.Products)
+                                            {
+
+                                                if (p.Category == "Dessert")
+                                                {
+
+                                                                                <div class="menu-wrap">
+                                                                                    @if (p.Name == "Apple Pie")
+                                                                                    {
+
+                                                                                        <a class="menu-img img mb-4" style="background-image: url(Images/apple-pie.jpg);"></a>
+
+                                                                                    }
+                                                                                    @if (p.Name == "Ice Cream")
+                                                                                    {
+
+                                                                                        <a class="menu-img img mb-4" style="background-image: url(Images/ice-cream.jpg);"></a>
+
+                                                                                    }
+                                                                                    @if (p.Name == "Potato Pudding")
+                                                                                    {
+
+                                                                                        <a class="menu-img img mb-4" style="background-image: url(Images/potato-pudding.jpg);"></a>
+
+                                                                                    }
+                                                                                    <div class="text">
+                                                                                        <h3><a href="#">@p.Name</a></h3>
+                                                                                        <p>@p.Description</p>
+                                                                                        <p class="price"><span>@p.Price</span></p>
+                                                                                        <p><a asp-page="Product" asp-route-name="@p.Name.Replace(" ", "-")" class="btn btn-primary btn-outline-primary">Add to cart</a></p>
+                                                                                    </div>
+                                                                                </div>
+
+                                                }
+                                            }
+                                        }
+
+                                    </div>
+
+                                </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+</section> 

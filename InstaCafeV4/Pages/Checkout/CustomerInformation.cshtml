@@ -3,69 +3,103 @@
 @{
 }
 
+<section class="home-slider owl-carousel">
 
-<div class="columns">
-    <div class="column is-6">
-        <form method="post">
-            <div class="field">
-                <p class="control">
-                    <label class="label">First Name</label>
-                    <input class="input" asp-for="CustomerInformation.FirstName" />
-                </p>
-                <span class="help is-danger" asp-validation-for="CustomerInformation.FirstName"></span>
+    <div class="slider-item" style="background-image: url(~/wwwroot/Images/bg_3.jpg);" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row slider-text justify-content-center align-items-center">
+
+                <div class="col-md-7 col-sm-12 text-center ftco-animate">
+                    <h1 class="mb-3 mt-5 bread">Checkout</h1>
+                    <p class="breadcrumbs"><span class="mr-2"><a asp-page="Index">Home</a></span> <span>Checout</span></p>
+                </div>
+
             </div>
-            <div class="field">
-                <p class="control">
-                    <label class="label">Last Name</label>
-                    <input class="input" asp-for="CustomerInformation.LastName" />
-                </p>
-                <span class="help is-danger" asp-validation-for="CustomerInformation.LastName"></span>
-            </div>
-            <div class="field">
-                <p class="control">
-                    <label class="label">Phone</label>
-                    <input class="input" asp-for="CustomerInformation.PhoneNumber" />
-                </p>
-                <span class="help is-danger" asp-validation-for="CustomerInformation.PhoneNumber"></span>
-            </div>
-            <div class="field">
-                <p class="control">
-                    <label class="label">Email</label>
-                    <input class="input" asp-for="CustomerInformation.Email" />
-                </p>
-                <span class="help is-danger" asp-validation-for="CustomerInformation.Email"></span>
-            </div>
-            <div class="field">
-                <p class="control">
-                    <label class="label">Address1</label>
-                    <input class="input" asp-for="CustomerInformation.Address1" />
-                </p>
-                <span class="help is-danger" asp-validation-for="CustomerInformation.Address1"></span>
-            </div>
-            <div class="field">
-                <p class="control">
-                    <label class="label">Address2</label>
-                    <input class="input" asp-for="CustomerInformation.Address2" />
-                </p>
-                <span class="help is-danger" asp-validation-for="CustomerInformation.Address2"></span>
-            </div>
-            <div class="field">
-                <p class="control">
-                    <label class="label">City</label>
-                    <input class="input" asp-for="CustomerInformation.City" />
-                </p>
-                <span class="help is-danger" asp-validation-for="CustomerInformation.City"></span>
-            </div>
-            <div class="field">
-                <p class="control">
-                    <label class="label">Post Code</label>
-                    <input class="input" asp-for="CustomerInformation.PostCode" />
-                </p>
-                <span class="help is-danger" asp-validation-for="CustomerInformation.PostCode"></span>
-            </div>
-            <div class="field">
-                <button class="button is-success" type="submit">Submit</button>
-            </div>
-        </form>
+        </div>
     </div>
-</div>
+</section>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-8 ftco-animate">
+                <form id="forminfo" class="billing-form ftco-bg-dark p-3 p-md-5" method="post">
+                    <h3 class="mb-4 billing-heading">Billing Details</h3>
+                    <div class="row align-items-end">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="firstname">First Name</label>
+                                <span class="help is-danger" asp-validation-for="CustomerInformation.FirstName"></span>
+                                <input type="text" class="form-control" placeholder="" asp-for="CustomerInformation.FirstName">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="lastname">Last Name</label>
+                                <span class="help is-danger" asp-validation-for="CustomerInformation.LastName"></span>
+                                <input type="text" class="form-control" placeholder="" asp-for="CustomerInformation.LastName">
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+                        
+                        <div class="w-100"></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="streetaddress">Street Address</label>
+                                <span class="help is-danger" asp-validation-for="CustomerInformation.Address2"></span>
+                                <input type="text" class="form-control" placeholder="House number and street name" asp-for="CustomerInformation.Address1">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <span class="help is-danger" asp-validation-for="CustomerInformation.Address2"></span>
+                                <input type="text" class="form-control" placeholder=" (optional)" asp-for="CustomerInformation.Address2">
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="towncity">Town / City</label>
+                                <span class="help is-danger" asp-validation-for="CustomerInformation.City"></span>
+                                <input type="text" class="form-control" placeholder="" asp-for="CustomerInformation.City">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="postcodezip">Postcode / ZIP *</label>
+                                <span class="help is-danger" asp-validation-for="CustomerInformation.PostCode"></span>
+                                <input type="text" class="form-control" placeholder="" asp-for="CustomerInformation.PostCode">
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <span class="help is-danger" asp-validation-for="CustomerInformation.PhoneNumber"></span>
+                                <input type="text" class="form-control" placeholder="" asp-for="CustomerInformation.PhoneNumber">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="emailaddress">Email Address</label>
+                                <span class="help is-danger" asp-validation-for="CustomerInformation.Email"></span>
+                                <input type="text" class="form-control" placeholder="" asp-for="CustomerInformation.Email">
+                            </div>
+                        </div>
+
+                        <p><a class="btn btn-primary py-3 px-4" onclick="document.getElementById('forminfo').submit();">Place an order</a></p>
+                        <div class="w-100"></div>
+                    </div>
+                </form>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+                
+                            
+
+
+                  

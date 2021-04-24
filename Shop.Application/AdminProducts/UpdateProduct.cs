@@ -1,4 +1,5 @@
 ﻿using Shop.Database;
+
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,6 +21,8 @@ namespace Shop.Application.AdminProducts
             product.Name = request.Name;
                 product.Description = request.Description;
                 product.Price = request.Price;
+             //   product.Image = request.Image;
+            product.Category = request.Category;
          
             await _context.SaveChangesAsync();
 
@@ -28,7 +31,9 @@ namespace Shop.Application.AdminProducts
                 Id = product.Id,
                 Name = product.Name,
                 Description = product.Description,
-                Price = product.Price
+                Price = product.Price,
+             //   Image = product.Image,
+                Category = product.Category
             };
         }
         public class Request
@@ -39,6 +44,8 @@ namespace Shop.Application.AdminProducts
 
             [Column(TypeName = "decimal(18,4)")]
             public decimal Price { get; set; }
+           // public string Image { get; set; }
+            public string Category { get; set; }
         }
 
         public class Response
@@ -48,6 +55,9 @@ namespace Shop.Application.AdminProducts
             public string Name { get; set; }
             public string Description { get; set; }
             public decimal Price { get; set; }
+
+         //   public string Image { get; set; }
+            public string Category { get; set; }
         }
     }
 }

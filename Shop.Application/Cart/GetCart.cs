@@ -1,44 +1,44 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
+
+using Shop.Application.Infrastructure;
 using Shop.Database;
-using Shop.Domain.Models;
-using System;
+
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+
 
 namespace Shop.Application.Cart
 {
     public class GetCart
     {
-        private ISession _session;
+        private ISessionManager _sessionManager;
 
         private ApplicationDbContext _ctx;
         
-        public GetCart(ISession session, ApplicationDbContext ctx)
+        public GetCart(ISessionManager sessionManager, ApplicationDbContext ctx)
         {
-            _session = session;
+            _sessionManager = sessionManager;
             _ctx = ctx;
         }
 
         public class Response
         {
             public string Name { get; set; }
-            public string Price { get; set; }
+            public decimal Price { get; set; }
             public int Quantity { get; set; }
             public int StockId { get; set; }
            
+            
         }
 
-        public IEnumerable <Response> Do()
+        public ICollection <Response> Do()
         {
-            var stringObject = _session.GetString("cart");
+            var cartList = _sessionManager.GetCart();
 
-            if (string.IsNullOrEmpty(stringObject))
+            
+            if (cartList == null)
                 return new List<Response>();
-
-            var cartList = JsonConvert.DeserializeObject<List<CartProduct>>(stringObject);
 
             var response = _ctx.Stocks
                 .Include(x => x.Product).AsEnumerable()
@@ -46,9 +46,11 @@ namespace Shop.Application.Cart
                 .Select(x => new Response
                 {
                     Name = x.Product.Name,
-                    Price = $"$ {x.Product.Price:N2}",
+                    Price = x.Product.Price,
                     StockId = x.Id,
-                    Quantity = cartList.FirstOrDefault(y => y.StockId == x.Id).Quantity
+                    //Image = x.Image,
+                    Quantity = cartList.FirstOrDefault(y => y.StockId == x.Id).Quantity,
+                    
                 })
                 .ToList();
 

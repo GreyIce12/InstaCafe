@@ -1,24 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Shop.Application.Cart;
-using Shop.Database;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace InstaCafeV4.ViewComponents
 {
+
     public class CartViewComponent:ViewComponent
     {
-        private ApplicationDbContext _ctx;
-        public CartViewComponent(ApplicationDbContext ctx)
-        {
-            _ctx = ctx;
-        }
+        private GetCart _getCart;
 
-        public IViewComponentResult Invoke(string view = "Default")
+        public CartViewComponent( GetCart getCart)
         {
-            return View(view, new GetCart(HttpContext.Session, _ctx).Do());
+            _getCart = getCart;
+        }
+        
+        public IViewComponentResult Invoke([FromServices] GetCart _getcart, string view = "Default" )
+        {
+            return View(view, _getcart.Do());
         }
     }
 }

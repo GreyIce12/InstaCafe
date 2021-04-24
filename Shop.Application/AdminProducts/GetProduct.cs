@@ -1,4 +1,6 @@
-﻿using Shop.Database;
+﻿using Microsoft.AspNetCore.Http;
+using Shop.Database;
+using Shop.Domain.Enums;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,7 +23,10 @@ namespace Shop.Application.AdminProducts
                 Id = x.Id,
                 Name = x.Name,
                 Description = x.Description,
-                Price = x.Price
+                Price = x.Price,
+                Category = x.Category,
+                //Image = 
+
             })
 
         .FirstOrDefault();    
@@ -34,6 +39,8 @@ namespace Shop.Application.AdminProducts
 
             [Column(TypeName = "decimal(18,4)")]
             public decimal Price { get; set; }
+            ///public IFormFile Image { get; set; }
+            public string Category { get; set; }
         }
     }
 }

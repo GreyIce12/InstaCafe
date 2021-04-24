@@ -4,20 +4,165 @@
 }
 
 
+<section class="ftco-section ftco-cart">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 ftco-animate">
+                <div class="cart-list">
+                    <table class="table">
+                        <thead class="thead-primary">
+                            <tr class="text-center">
+                                <th>&nbsp;</th>
+                                <th>&nbsp;</th>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-<div>
-    @foreach ( var product in Model.Cart)
-    {
+                            @{
 
-        <p> @product.Name</p>
-        <p> @product.Price</p>
-        <p> @product.Quantity</p>
-        <p> @product.StockId</p>
+                                @foreach (var product in Model.Cart)
+                                {
 
-        <hr/>
-    }
+                            <tr class="text-center">
+                                <!--<td class="product-remove"><a onclick="removeFromCart(event)" data-stock-id="@product.StockId"><span class="icon-close"></span></a></td>-->
+
+                                @if (product.Name == "Apple Pie")
+                                {
 
 
-</div>
+                                    <td class="image-prod"><div class="img" style="background-image:url(Images/apple-pie.jpg);"></div></td>
+                                }
 
-@await Component.InvokeAsync("Cart", new { view ="Small"})
+                                @if (product.Name == "Ice Cream")
+                                {
+
+
+                                    <td class="image-prod"><div class="img" style="        background-image: url(Images/ice-cream.jpg);"></div></td>
+                                }
+
+                                @if (product.Name == "Potato Pudding")
+                                {
+
+
+                                    <td class="image-prod"><div class="img" style="        background-image: url(Images/potato-pudding.jpg);"></div></td>
+                                }
+
+                                @if (product.Name == "Orange Juice")
+                                {
+
+
+                                    <td class="image-prod"><div class="img" style="        background-image: url(Images/drink-1.jpg);"></div></td>
+                                }
+
+                                @if (product.Name == "Sorrel Juice")
+                                {
+
+
+                                    <td class="image-prod"><div class="img" style="        background-image: url(Images/drink-8.jpg);"></div></td>
+                                }
+
+                                @if (product.Name == "Soda")
+                                {
+
+                                    <td class="image-prod"><div class="img" style="        background-image: url(Images/soda.jpg);"></div></td>
+                                }
+
+                                @if (product.Name == "Grilled Cheese Sandwich")
+                                {
+
+
+                                    <td class="image-prod"><div class="img" style="        background-image: url(Images/burger-3.jpg);"></div></td>
+                                }
+
+                                @if (product.Name == "Mock Chicken")
+                                {
+
+
+                                    <td class="image-prod"><div class="img" style="        background-image: url(Images/mock-chicken.jpg);"></div></td>
+                                }
+
+                                @if (product.Name == "Sorrel Sauce Tipplets in Lentils Rice")
+                                {
+
+
+                                    <td class="image-prod"><div class="img" style=" background-image: url(Images/tiplets.jpg);"></div></td>
+
+                                }
+
+
+                                <td class="product-name">
+                                    <h3>@product.Name</h3>
+                                    <p>Far far away, behind the word mountains, far from the countries</p>
+                                </td>
+
+                                <td class="price">@product.Price</td>
+
+                                <td class="quantity">
+                                    <div class="input-group mb-3">
+                                        <input class="quantity form-control input-number" value="@product.Quantity" max="100">
+                                    </div>
+                                </td>
+
+
+
+
+                            </tr><!-- END TR-->}}
+                            
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+       
+                <p class="text-center"><a asp-page="/Checkout/CustomerInformation" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+            </div>
+    
+</section>
+
+
+
+@section scripts{
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>
+        var removeAllFromCart = function (e) {
+            var stockId = e.target.dataset.stockId;
+            var id = "stock-qty-" + stockId;
+            var el = document.getElementById(id);
+            var qty = parseInt(el.innerText);
+            removeFromCart(stockId, Quantity);
+        }
+
+        var removeFromCart = function (stockId, Quantity) {
+            axios.post("/Cart/Remove/" + stockId + '/' + Quantity)
+                .then(res => {
+                    updateCart();
+                })
+                .catch(err => {
+                    alert(err.error);
+                })
+        }
+
+        var updateCart = function () {
+            axios.get('/Cart/GetCartComponent')
+                .then(res => {
+                    var html = res.data;
+                    var el = document.getElementById('cart-nav');
+
+                    el.outerHTML = html;
+                });
+
+            axios.get('/Cart/GetCartMain')
+                .then(res => {
+                    var html = res.data;
+                    var el = document.getElementById('cart-main');
+
+                    el.outerHTML = html;
+                })
+        }
+    </script>
+}

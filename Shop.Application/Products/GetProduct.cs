@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Shop.Database;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace Shop.Application.Products
 
             if (stockOnHold.Count > 0)
             {
-                var stockToReturn = _context.Stocks.Where(x => stockOnHold.Any(y => y.StockId == x.Id)).ToList();
+                var stockToReturn = _context.Stocks.AsEnumerable().Where(x => stockOnHold.Any(y => y.StockId == x.Id)).ToList();
 
                 foreach (var stock in stockToReturn)
                 {
@@ -49,13 +50,15 @@ namespace Shop.Application.Products
 
                 Name = x.Name,
                 Description = x.Description,
-                Price = $"$ {x.Price:N2}",
+                Price = $"$ {x.Price.ToString("N2")}",
+                Category = x.Category,
+                //Image = x.Image,
 
                 Stock = x.Stock.Select(y => new StockViewModel
                 {
                     Id = y.Id,
                     Description = y.Description,
-                    Instock = y.Quantity > 0
+                    Quantity = y.Quantity 
                 })
             })
             .FirstOrDefault();
@@ -69,6 +72,11 @@ namespace Shop.Application.Products
             public string Description { get; set; }
             public string Price { get; set; }
 
+         //   public string Image { get; set; }
+           // public IFormFile Photo { get; set; }
+
+            public string Category { get; set; }
+
             public IEnumerable<StockViewModel> Stock { get; set; }
         }
 
@@ -76,7 +84,7 @@ namespace Shop.Application.Products
         {
             public int Id { get; set; }
             public string Description { get; set; }
-            public bool Instock { get; set; }
+            public int Quantity { get; set; }
         }
     }
 }

@@ -18,11 +18,11 @@ namespace InstaCafeV4.Pages
         }
 
         [BindProperty]       
-        public IEnumerable<GetProducts.ProductViewModel> Products { get; set; }
+        public IList<GetProducts.ProductViewModel> Products { get; set; }
         
         public void OnGet()
         {
-           Products = new GetProducts(_ctx).Do();
+           Products = (IList<GetProducts.ProductViewModel>)new GetProducts(_ctx).Do();
         }
 
         

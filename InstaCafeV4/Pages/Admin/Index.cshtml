@@ -1,15 +1,14 @@
 ﻿@page
 @model IndexModel
 
-@{
-    Layout = "Admin_Layout.cshtml";
-    ViewData["Title"] = "Admin Page";
-}
+@{ Layout = "Admin_Layout.cshtml";
+ ViewData["Title"] = "Admin Page"; }
 
 <div id="app" class="container">
 
     <div v-if="!editing">
         <button class="button" @@click="newProduct">Add New Product</button>
+
         <table class="table">
             <tr>
                 <th>Id</th>
@@ -44,22 +43,30 @@
         </div>
 
         <div class="field">
-            <label class="label">Value</label>
+            <label class="label">
+                Prices
+            </label>
             <div class="control">
                 <input class="input" v-model="productModel.price" />
             </div>
         </div>
+
+        <div class="field">
+            <label class="label">Category</label>
+            <div class="control">
+                <input class="input" v-model="productModel.category" />
+            </div>
+        </div>
+
         <button class="button is-success" @@click="createProduct" v-if="!productModel.id">Create Product</button>
         <button class="button is-warning" @@click="updateProduct" v-else>Update Product</button>
         <button class="button" @@click="cancel">Cancel</button>
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="~/js/adminjs/product.js"></script>
+
 
 @section scripts{
 
-
+    <script src="/js/adminjs/products.js"></script>
 }

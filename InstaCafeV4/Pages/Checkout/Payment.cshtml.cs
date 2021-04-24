@@ -4,10 +4,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
+using Shop.Application.Cart;
 using Shop.Application.Orders;
 
 using Shop.Database;
 using Stripe;
+using GetOrderCart = Shop.Application.Cart.GetOrder;
 
 namespace InstaCafeV4.Pages.Checkout
 {
@@ -26,10 +28,10 @@ namespace InstaCafeV4.Pages.Checkout
 
         
 
-        public  IActionResult OnGet()
+        public  IActionResult OnGet([FromServices] GetCustomerInformation getCustomerInformation)
         {
            
-            var information = new Shop.Application.Cart.GetCustomerInformation(HttpContext.Session).Do();
+            var information = getCustomerInformation.Do();
 
             if (information == null)
             {
@@ -38,7 +40,9 @@ namespace InstaCafeV4.Pages.Checkout
 
             return Page();
         }
-        public async Task <IActionResult> OnPost(string stripeEmail, string stripeToken)
+        public async Task <IActionResult> OnPost(string stripeEmail, 
+            string stripeToken,
+            [FromServices] GetOrderCart getOrdercart)
         {
             
             
@@ -46,7 +50,7 @@ namespace InstaCafeV4.Pages.Checkout
             var customers = new CustomerService();
             var charges = new ChargeService();
 
-            var CartOrder = new Shop.Application.Cart.GetOrder(HttpContext.Session, _ctx).Do();
+            var cartOrder = getOrdercart.Do();
             
             var customer = customers.Create(new CustomerCreateOptions
             {
@@ -56,7 +60,7 @@ namespace InstaCafeV4.Pages.Checkout
 
             var charge = charges.Create(new ChargeCreateOptions
             {
-                Amount = CartOrder.GetTotalCharges(),
+                Amount = cartOrder.GetTotalCharges(),
                 Description = "Shop Purchase",
                 Currency = "JMD",
                 Customer = customer.Id
@@ -69,16 +73,16 @@ namespace InstaCafeV4.Pages.Checkout
                 
                 SessionId = sessionId,
 
-                FirstName = CartOrder.CustomerInformation.FirstName,
-                LastName = CartOrder.CustomerInformation.LastName,
-                Email = CartOrder.CustomerInformation.Email,
-                PhoneNumber = CartOrder.CustomerInformation.PhoneNumber,
-                Address1 = CartOrder.CustomerInformation.Address1,
-                Address2 = CartOrder.CustomerInformation.Address2,
-                City = CartOrder.CustomerInformation.City,
-                PostCode = CartOrder.CustomerInformation.PostCode,
+                FirstName = cartOrder.CustomerInformation.FirstName,
+                LastName = cartOrder.CustomerInformation.LastName,
+                Email = cartOrder.CustomerInformation.Email,
+                PhoneNumber = cartOrder.CustomerInformation.PhoneNumber,
+                Address1 = cartOrder.CustomerInformation.Address1,
+                Address2 = cartOrder.CustomerInformation.Address2,
+                City = cartOrder.CustomerInformation.City,
+                PostCode = cartOrder.CustomerInformation.PostCode,
 
-                Stocks = CartOrder.Products.Select(x => new CreateOrder.Stock
+                Stocks = cartOrder.Products.Select(x => new CreateOrder.Stock
                 {
                     StockId = x.StockId,
                     Quantity = x.Quantity
